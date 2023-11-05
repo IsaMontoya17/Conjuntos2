@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.text.JTextComponent;
 import logica.Logica;
 
 public class Menu {
@@ -43,13 +46,28 @@ public class Menu {
 
             switch (opcion) {
                 case "1":
-                    //listarYContarPorTipo(profesoresTiempoCompleto, "Tiempo Completo");
+                    ArrayList<Profesor> profesoresTiempoCompletoCopia = new ArrayList<>(profesoresTiempoCompleto);
+                    profesoresTiempoCompletoCopia.removeAll(profesoresCatedra);
+                    profesoresTiempoCompletoCopia.removeAll(profesoresOcasional);
+                    listarArrayList(profesoresTiempoCompletoCopia);
+                    String message1= "\nNúmero de profesores de Tiempo Completo que no están en Cátedra ni en Ocasional: " + profesoresTiempoCompletoCopia.size();
+                    JOptionPane.showMessageDialog(null, message1);
                     break;
                 case "2":
-                    //listarYContarPorTipo(profesoresCatedra, "Cátedra");
+                    ArrayList<Profesor> profesoresCatedraCopia = new ArrayList<>(profesoresCatedra);
+                    profesoresCatedraCopia.removeAll(profesoresTiempoCompleto);
+                    profesoresCatedraCopia.removeAll(profesoresOcasional);
+                    listarArrayList(profesoresCatedraCopia);
+                    String message2= "\nNúmero de profesores de Cátedra que no están en Tiempo Completo ni en Ocasional: " + profesoresCatedraCopia.size();
+                    JOptionPane.showMessageDialog(null, message2);
                     break;
                 case "3":
-                    //listarYContarPorTipo(profesoresOcasional, "Ocasional");
+                    ArrayList<Profesor> profesoresOcasionalCopia = new ArrayList<>(profesoresOcasional);
+                    profesoresOcasionalCopia.removeAll(profesoresCatedra);
+                    profesoresOcasionalCopia.removeAll(profesoresTiempoCompleto);
+                    listarArrayList(profesoresOcasionalCopia);
+                    String message3= "\nNúmero de profesores de Ocasional que no están en Cátedra ni en Tiempo Completo: " + profesoresOcasionalCopia.size();
+                    JOptionPane.showMessageDialog(null, message3);
                     break;
                 case "4":
                     //listarYContarTodos(profesoresTiempoCompleto, profesoresCatedra, profesoresOcasional);
@@ -129,5 +147,29 @@ public class Menu {
         JOptionPane.showMessageDialog(null, "Nuevo profesor ingresado con éxito.");
         
     }//CIERRE DEL METODO
+
+    public void listarArrayList(ArrayList<Profesor> lista) {
+        StringBuilder message = new StringBuilder("Lista de profesores:\n");
+
+        for (Profesor profesor : lista) {
+            message.append("Cédula: ").append(profesor.getCedula()).append("\n");
+            message.append("Nombre: ").append(profesor.getNombreCompleto()).append("\n");
+            message.append("Sexo: ").append(profesor.getSexo()).append("\n");
+            message.append("Facultad: ").append(profesor.getFacultad()).append("\n");
+            message.append("Título: ").append(profesor.getTitulo()).append("\n");
+            message.append("Asignaturas Dictadas: ").append(profesor.getAsignaturasDictadas()).append("\n");
+            message.append("Horas Dictadas Por Semana: ").append(profesor.getHorasDictadasPorSemana()).append("\n");
+            message.append("Fecha de Nacimiento: ").append(profesor.getFechaNacimiento()).append("\n");
+            message.append("Tipo de Profesor: ").append(profesor.getTipoProfesor()).append("\n\n");
+        }
+
+        JTextComponent textArea = new JTextArea(message.toString());
+        textArea.setEditable(false);
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+
+        JOptionPane.showMessageDialog(null, scrollPane);
+    }
+
 
 }//CIERRE DE LA CLASE

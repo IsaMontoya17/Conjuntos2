@@ -16,12 +16,12 @@ public class Logica {
 
     public void cargarProfesoresEnArrayLists(ArrayList<Profesor> profesoresTiempoCompleto, ArrayList<Profesor> profesoresCatedra, ArrayList<Profesor> profesoresOcasional) throws ParseException {
         try {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Formato de fecha
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             BufferedReader br = new BufferedReader(new FileReader("./datos/profesores.txt"));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(", ");
-                if (parts.length == 9) { // Asegurarse de que hay 9 campos en cada línea
+                if (parts.length == 9) {
                     String tipoContrato = parts[8];
                     LocalDate fechaNacimiento = LocalDate.parse(parts[7], dateFormatter);
                     Profesor profesor = new Profesor(parts[0], parts[1], parts[2], parts[3], parts[4],

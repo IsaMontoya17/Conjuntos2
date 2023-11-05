@@ -2,7 +2,6 @@
 package bean;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Profesor {
     private String cedula;
