@@ -30,3 +30,4 @@
 0121234572, Carlos López, Masculino, Ciencias Básicas, Doctorado, 9, 19, 06/05/1976, Ocasional-Cátedra
 1023523326, Isabela, Masculino, Ingeniería, Pregrado, 3, 20, 17/03/2005, Tiempo Completo
 1023523325, Venus Montoya, Masculino, Ingeniería, Pregrado, 2, 10, 26/05/2020, Ocasional-Cátedra
+123, Hola Holis, Femenino, Deportes, Maestría, 4, 12, 01/03/2001, Tiempo Completo-Cátedra-Ocasional

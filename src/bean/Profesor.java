@@ -102,4 +102,5 @@ public class Profesor {
     public void setTipoProfesor(String tipoProfesor) {
         this.tipoProfesor = tipoProfesor;
     }
-}
+    
+}//CIERRE DE LA CLASE

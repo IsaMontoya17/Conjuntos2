@@ -27,7 +27,6 @@ public class Logica {
                     Profesor profesor = new Profesor(parts[0], parts[1], parts[2], parts[3], parts[4],
                             Integer.parseInt(parts[5]), Integer.parseInt(parts[6]), fechaNacimiento, tipoContrato);
 
-                    // Agregar el profesor a los ArrayList correspondientes
                     if (tipoContrato.contains("Tiempo Completo")) {
                         profesoresTiempoCompleto.add(profesor);
                     }
